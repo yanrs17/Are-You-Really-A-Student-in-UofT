@@ -1,19 +1,20 @@
+/* Questions */
 options = [
 {
     img: "img/ba1.jpeg",
     option1: "程序员聚眾写码的神秘建筑",
     option2: "很多书的禽类形状建筑",
-    option3: "又绿又园的集会场所",
+    option3: "又绿又圆的集会场所",
     option4: "衣服穿得很少的地方",
-    answer: "程序员聚眾写码的神秘建筑"
+    answer: "option1"
 },
 {
     img: "img/Ch1.jpeg",
     option1: "松鼠成灾的椭圆状公园",
     option2: "马猴烧酒晒太阳的地方",
-    option3: "又绿又园的集会场所",
+    option3: "又绿又圆的集会场所",
     option4: "衣服穿得很少的地方",
-    answer: "又绿又园的集会场所"
+    answer: "option3"
 },
 {
     img: "img/GR.jpeg",
@@ -21,7 +22,7 @@ options = [
     option2: "理科生泡馆首选",
     option3: "距离安大略湖最近的校门",
     option4: "社团摆booth最多的地方",
-    answer: "option11"
+    answer: "option2"
 },
 {
     img: "img/MP.jpeg",
@@ -29,7 +30,7 @@ options = [
     option2: "物理实验室的所在地",
     option3: "衣服穿得很少的地方",
     option4: "离死亡最近的地方",
-    answer: "物理实验室的所在地"
+    answer: "option2"
 },
 {
     img: "img/EJ.jpeg",
@@ -37,7 +38,7 @@ options = [
     option2: "最有钱College的图书馆",
     option3: "很多书的禽类形状建筑",
     option4: "Earth Science Centre",
-    answer: "很多书的禽类形状建筑"
+    answer: "option2"
 },
 {
     img: "img/jjduoft.jpeg",
@@ -45,7 +46,7 @@ options = [
     option2: "衣服穿得很少的地方",
     option3: "松鼠成灾的椭圆状公园",
     option4: "程序员聚眾写码的神秘建筑",
-    answer: "社团摆booth最多的地方"
+    answer: "option1"
 },
 {
     img: "img/ES.jpeg",
@@ -53,14 +54,11 @@ options = [
     option2: "寂静的UofT",
     option3: "很多书的禽类形状建筑",
     option4: "Earth Science Centre",
-    answer: "Earth Science Centre"
+    answer: "option4"
 },
 ]
 
-/**
- * Shuffles array in place.
- * @param {Array} a items The array containing the items.
- */
+/* Shuffle the array. */
 function shuffle(a) {
     var i, j, x;
     for (i = a.length; i; i--) {
@@ -71,53 +69,67 @@ function shuffle(a) {
     }
 }
 
+/* Get start page */
 $(document).ready(function() {
-
     $('img').hide();
     $('button').hide();
     $('#start').show();
-    shuffle(options);
-    window.questionNum = 0;
+    $('#score').hide();
 });
 
-$('button').click(function() {
+/* Start */
+$('#start').click(function() {
+    shuffle(options);
+    $('img').show();
+    $('button').show();
+    $('#start').hide();
+    $('#score').hide();
+    window.questionNum = 0;
+    window.score = 0;
+    apply();
+});
 
+/* Next page */
+$("#next").click(function() {
+    if ($("#" + options[questionNum-1]["answer"]).attr("class") == "active") {
+        score += 10;
+    }
+    console.log(score);
+    if (questionNum < options.length) {
+        apply();
+    } else {
+        $('img').hide();
+        $('button').hide();
+        $('#score').show();
+        $('#score').html("Your score: " + score);
+        $('#start').show();
+        $('#start').html("RESTART!");
+    }
+});
+
+/* Select the button */
+/* This function must be after $("#next")
+    Otherwise the score cannot be shown properly. */
+$('button').click(function() {
     if ($(this).attr('class') == 'active') {
         $(this).removeAttr('class');
     } else if ($(this).attr('class') == undefined) {
         $('button').removeAttr('class');
         $(this).attr('class', 'active');
     }
+    $('#next').removeAttr('class');
 });
 
-$('#start').click(function() {
-
-    $('img').show();
-    $('button').show();
-    $('#start').hide();
-    apply();
-});
-
-$("#next").click(function() {
-    if (questionNum < options.length) {
-        apply();
-    } else {
-        $('img').hide();
-        $('button').hide();
-        $('#start').show();
-        $('#start').html("RESTART!");
-    }
-});
-
+/* Apply questions */
 function apply() {
 
     $('#img').attr("src", options[questionNum]["img"]);
-    $('#opt1').html(options[questionNum]["option1"]);
-    $('#opt2').html(options[questionNum]["option2"]);
-    $('#opt3').html(options[questionNum]["option3"]);
-    $('#opt4').html(options[questionNum]["option4"]);
+    $('#option1').html(options[questionNum]["option1"]);
+    $('#option2').html(options[questionNum]["option2"]);
+    $('#option3').html(options[questionNum]["option3"]);
+    $('#option4').html(options[questionNum]["option4"]);
     $('#next').html("NEXT");
-    $('#next').removeAttr('class');
+    // $('#next').removeAttr('class');
     questionNum ++;
 
     if (questionNum == options.length) {

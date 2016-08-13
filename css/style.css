@@ -1,5 +1,4 @@
 html {
-  /*background: url(../img/background.jpg) no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -14,9 +13,6 @@ h1 {
 }
 
 section {
-    /*width: 85%;*/
-    /*padding: 10px 40px;
-    background: #dddddd;*/
     border-radius: 25px;
     margin-right: 10%;
 }
@@ -35,7 +31,6 @@ button {
     height:100px;
     width: 95%;
     background-color: gray;
-    /*text-align: center;*/
 }
 
 .active {
@@ -44,4 +39,8 @@ button {
 
 #start {
     margin-top: 50%
+}
+#score {
+    text-align: center;
+    font-size: 100px;
 }
