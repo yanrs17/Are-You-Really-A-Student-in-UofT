@@ -1,9 +1,41 @@
-/* HTML */
 html {
-  background: url(../img/background.jpg) no-repeat center center fixed;
+  /*background: url(../img/background.jpg) no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   margin-left: 50px;
+}
+
+h1 {
+    text-align: center;
+    color: navy;
+    font-size: 250%;
+}
+
+section {
+    /*width: 85%;*/
+    /*padding: 10px 40px;
+    background: #dddddd;*/
+    border-radius: 25px;
+    margin-right: 10%;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    max-height: 500px;
+}
+
+button {
+    font-size: 100px;
+    width: 100%;
+    background-color: gray;
+    /*text-align: center;*/
+}
+
+.active {
+    background-color: aqua;
 }
