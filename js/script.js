@@ -1,3 +1,5 @@
+/* Created by Ryan Ruoshui Yan on Aug 13, 2016 */
+
 /* Questions */
 options = [
 {
@@ -6,7 +8,8 @@ options = [
     option2: "很多书的禽类形状建筑",
     option3: "又绿又圆的集会场所",
     option4: "衣服穿得很少的地方",
-    answer: "option1"
+    answer: "option1",
+    description: "Bahen Centre"
 },
 {
     img: "img/Ch1.jpeg",
@@ -14,15 +17,17 @@ options = [
     option2: "马猴烧酒晒太阳的地方",
     option3: "又绿又圆的集会场所",
     option4: "衣服穿得很少的地方",
-    answer: "option3"
+    answer: "option3",
+    description: "Con Hall"
 },
 {
-    img: "img/GR.jpeg",
+    img: "img/GERs.jpg",
     option1: "寂静的UofT",
     option2: "理科生泡馆首选",
     option3: "距离安大略湖最近的校门",
     option4: "社团摆booth最多的地方",
-    answer: "option2"
+    answer: "option2",
+    description: "Gerstein Library"
 },
 {
     img: "img/MP.jpeg",
@@ -30,35 +35,67 @@ options = [
     option2: "物理实验室的所在地",
     option3: "衣服穿得很少的地方",
     option4: "离死亡最近的地方",
-    answer: "option2"
+    answer: "option2",
+    description: "MP"
 },
 {
-    img: "img/EJ.jpeg",
+    img: "img/RB.jpg",
     option1: "离死亡最近的地方",
     option2: "最有钱College的图书馆",
     option3: "很多书的禽类形状建筑",
-    option4: "Earth Science Centre",
-    answer: "option2"
+    option4: "玻璃非常非常大的场馆",
+    answer: "option3",
+    description: "Robarts Library"
 },
 {
-    img: "img/jjduoft.jpeg",
+    img: "img/qp.jpg",
     option1: "寂静的UofT",
     option2: "衣服穿得很少的地方",
-    option3: "松鼠成灾的椭圆状公园",
+    option3: "松鼠成灾的椭圆形",
     option4: "程序员聚眾写码的神秘建筑",
-    answer: "option1"
+    answer: "option3",
+    description: "Queens Park"
 },
 {
-    img: "img/ES.jpeg",
+    img: "img/GR.jpg",
+    option1: "离死亡最近的地方",
+    option2: "社团摆booth最多的地方",
+    option3: "很多书的禽类形状建筑",
+    option4: "与大玻璃一起运动",
+    answer: "option4",
+    description: "Goldring"
+},
+
+{
+    img: "img/EC.jpg",
     option1: "离死亡最近的地方",
     option2: "寂静的UofT",
     option3: "很多书的禽类形状建筑",
+    option4: "life sci小朋友经常出没的高级会所",
+    answer: "option1",
+    description: "Exam Centre"
+},
+{
+    img: "img/kc.jpg",
+    option1: "离死亡最近的地方",
+    option2: "不如跳舞的空旷场地",
+    option3: "很多书的禽类形状建筑",
     option4: "Earth Science Centre",
-    answer: "option4"
+    answer: "option2",
+    description: "King's Circle"
+},
+{
+    img: "img/AC.jpg",
+    option1: "离死亡最近的地方",
+    option2: "寂静的UofT",
+    option3: "不如跳舞的空旷场地",
+    option4: "衣服穿得很少的地方",
+    answer: "option4",
+    description: "Athelic Centre"
 },
 ]
 
-/* Shuffle the array. */
+/* Shuffle the array */
 function shuffle(a) {
     var i, j, x;
     for (i = a.length; i; i--) {
