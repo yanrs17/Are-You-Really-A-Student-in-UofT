@@ -2,31 +2,57 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" /> <!-- Meta -->
-        <script src="js/script.js" type="text/javascript" charset="utf-8" defer></script> <!-- JavaScript -->
-        <link href="css/style.css" rel="stylesheet" type="text/css"> <!-- CSS -->
-        <!-- <link rel="shortcut icon" href="img/favicon.png" />  -->
-        <!-- Favicon -->
+        <script src="bower_components/three.js/build/three.js"></script>
+        <script src="bower_components/aquarelle/Aquarelle.js"></script>
+        <script src="bower_components/three.js/examples/js/postprocessing/EffectComposer.js"></script>
+        <script src="bower_components/three.js/examples/js/postprocessing/ClearPass.js"></script>
+        <script src="bower_components/aquarelle/AquarellePass.js"></script>
+        <script src="bower_components/three.js/examples/js/postprocessing/ShaderPass.js"></script>
+        <script src="bower_components/three.js/examples/js/shaders/CopyShader.js"></script>
+        <script src="js/d3.geom.contour.min.js"></script>
+        <script src="js/database.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/constants.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/script.js" type="text/javascript" charset="utf-8" defer></script>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <style type="text/css"></style>
+        <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
 
-        <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script> <!-- JQuery -->
-
-        <!-- Title -->
         <title>Are You Really A Student in UofT?</title>
     </head>
 
     <body>
-        <button id="start" type="button" >START!</button>
-        <p id="score"></p>
+        <div class="fade">
+            <img id="logo" src="img/logo-med.jpg">
+        </div>
 
-        <img id="img"/>
-        <br/>
-        <button id="option1" type="button"></button>
-        <br/>
-        <button id="option2" type="button"></button>
-        <br/>
-        <button id="option3" type="button"></button>
-        <br/>
-        <button id="option4" type="button"></button>
-        <br/><br/>
-        <button id="next" type="button"></button>
+        <!-- <h1 style="display: none;">你真的是多大的学生吗？</h1>
+        <p style="display: none;">你真的是多大的学生吗？</p>
+        <img id="ada_logo" style="display: none;" /> -->
+
+        <img id="ada"/>
+        <img id="bluekey"/>
+
+        <div class="background-image"></div>
+        <div class="overlay"></div>
+        <h1 id="author">A D A 出 品</br> Are You Really A UofT Student? </h1>
+        <div id="startbtn">
+          <button id="start" type="button" ></button>
+        </div>
+
+        <div class="mainsec">
+          <img id="img"/>
+          <br/>
+          <button id="option1" type="button"></button>
+          <br/>
+          <button id="option2" type="button"></button>
+          <br/>
+          <button id="option3" type="button"></button>
+          <br/>
+          <button id="option4" type="button"></button>
+          <br/><br/>
+          <button id="next" type="button"></button>
+
+          <h1 id="bottom" style="color: white;"></h1>
+        </div>
     </body>
 </html>

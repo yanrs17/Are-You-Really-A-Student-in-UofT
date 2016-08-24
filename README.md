@@ -1,9 +1,9 @@
 ## Name
 Are You Really A Student in UofT
 
-## Function
-It is a template of multiple choice questions suitable on the mobile side.
-The questions are stored in JSON inside js &gt; script.js
+## What is it?
+- It is a template of multiple choice questions suitable for the mobile side.
+- The questions are stored in JSON inside js &gt; database.js
 
 ## Usage
 - Click on "START"
@@ -11,11 +11,12 @@ The questions are stored in JSON inside js &gt; script.js
 - Click on "NEXT"
 - Repeat until finishing all the questions
 - Click on "FINISH"
-- Then the answer page will display your score and a button to restart
+- Then the score page will display your score and a button to restart
 - Click on "RESTART" if you want to play it again
 
 ## Customization
-- Open js &gt; script.js
+- Update constants in js &gt; constants according to requirements
+- Open js &gt; database.js
 - Go to the end of "option" between the last "}," and "]"
 - Add the following code
 - IMPORTANT: Do not forget the comma in the last line
@@ -48,9 +49,9 @@ The questions are stored in JSON inside js &gt; script.js
 - Change &lt;description&gt; into a sentence explaining why the answer is correct.
 
 ## Todos
-- Show the reason why the answer is correct ("description") for the previous question after clicking on "NEXT"
-- Add logo and quick response code on the answer page
+✘ Show the reason why the answer is correct ("description") for the previous question after clicking on "NEXT"
+- Add logo and quick response code on the score page
 - Add more questions
 
 ## Troubleshooting
-- "Your score" on the answer page is too low and thus easy to miss.
+✓ "Your score" on the score page is too low and thus easy to miss.

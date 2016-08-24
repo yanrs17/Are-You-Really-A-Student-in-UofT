@@ -1,101 +1,11 @@
 /* Created by Ryan Ruoshui Yan on Aug 13, 2016 */
 
-/* Questions */
-options = [
-{
-    img: "img/ba1.jpeg",
-    option1: "程序员聚眾写码的神秘建筑",
-    option2: "很多书的禽类形状建筑",
-    option3: "又绿又圆的集会场所",
-    option4: "衣服穿得很少的地方",
-    answer: "option1",
-    description: "Bahen Centre"
-},
-{
-    img: "img/Ch1.jpeg",
-    option1: "松鼠成灾的椭圆状公园",
-    option2: "马猴烧酒晒太阳的地方",
-    option3: "又绿又圆的集会场所",
-    option4: "衣服穿得很少的地方",
-    answer: "option3",
-    description: "Con Hall"
-},
-{
-    img: "img/GERs.jpg",
-    option1: "寂静的UofT",
-    option2: "理科生泡馆首选",
-    option3: "距离安大略湖最近的校门",
-    option4: "社团摆booth最多的地方",
-    answer: "option2",
-    description: "Gerstein Library"
-},
-{
-    img: "img/MP.jpeg",
-    option1: "社团摆booth最多的地方",
-    option2: "物理实验室的所在地",
-    option3: "衣服穿得很少的地方",
-    option4: "离死亡最近的地方",
-    answer: "option2",
-    description: "MP"
-},
-{
-    img: "img/RB.jpg",
-    option1: "离死亡最近的地方",
-    option2: "最有钱College的图书馆",
-    option3: "很多书的禽类形状建筑",
-    option4: "玻璃非常非常大的场馆",
-    answer: "option3",
-    description: "Robarts Library"
-},
-{
-    img: "img/qp.jpg",
-    option1: "寂静的UofT",
-    option2: "衣服穿得很少的地方",
-    option3: "松鼠成灾的椭圆形",
-    option4: "程序员聚眾写码的神秘建筑",
-    answer: "option3",
-    description: "Queens Park"
-},
-{
-    img: "img/GR.jpg",
-    option1: "离死亡最近的地方",
-    option2: "社团摆booth最多的地方",
-    option3: "很多书的禽类形状建筑",
-    option4: "与大玻璃一起运动",
-    answer: "option4",
-    description: "Goldring"
-},
+var caidan = 0;
 
-{
-    img: "img/EC.jpg",
-    option1: "离死亡最近的地方",
-    option2: "寂静的UofT",
-    option3: "很多书的禽类形状建筑",
-    option4: "life sci小朋友经常出没的高级会所",
-    answer: "option1",
-    description: "Exam Centre"
-},
-{
-    img: "img/kc.jpg",
-    option1: "离死亡最近的地方",
-    option2: "不如跳舞的空旷场地",
-    option3: "很多书的禽类形状建筑",
-    option4: "Earth Science Centre",
-    answer: "option2",
-    description: "King's Circle"
-},
-{
-    img: "img/AC.jpg",
-    option1: "离死亡最近的地方",
-    option2: "寂静的UofT",
-    option3: "不如跳舞的空旷场地",
-    option4: "衣服穿得很少的地方",
-    answer: "option4",
-    description: "Athelic Centre"
-},
-]
+/* Functions */
 
-/* Shuffle the array */
+/* Shuffle the array. */
+// 答案隨機化
 function shuffle(a) {
     var i, j, x;
     for (i = a.length; i; i--) {
@@ -107,46 +17,138 @@ function shuffle(a) {
 }
 
 /* Get start page */
+// 轉到開始頁面
 $(document).ready(function() {
+
+    shuffle(options);
+    images = [];
+    var k;
+
+    var imageobj = new Image();
+    imageobj.src = options[0]["img"];
+    images.push(imageobj);
+
+
+
     $('img').hide();
+    $('div#author').hide();
     $('button').hide();
-    $('#start').show();
-    $('#score').hide();
+    // $('#ada_logo').attr('src', 'img/ada1.png');
+
+
+    /* Start landing page animation. */
+    var fade = document.querySelector('.fade');
+    var image = document.getElementsByTagName('img')[0];
+    var author = document.querySelector('#author');
+    var aquarelle = new Aquarelle(image, 'img/mask.png', {
+        autoplay: true,
+        loop: true
+    });
+
+    aquarelle.addEventListener('created', function() {
+        var canvas = this.getCanvas();
+        canvas.removeAttribute('style');
+        image.parentNode.insertBefore(canvas, image.nextSibling);
+        image.parentNode.removeChild(image);
+    });
+
+    aquarelle.addEventListener('changed', function(event) {
+        setTimeout(function(){
+            aquarelle.pause();
+            $('#start').show();
+            $('#start').html(START);
+        }, 6200);
+
+        $('div#author').show();
+        fade.style.opacity = this.transitionInRange(1, 0, 7183, 7933);
+
+        var canvas = this.getCanvas();
+        canvas.style.webkitFilter = 'blur(' + this.transitionInRange(0, 24, 3000) + 'px)';
+        canvas.style.webkitTransform = canvas.style.transform = 'translate(-50%, -100%) scale(' + this.transitionInRange(.75, 1) + ')';
+
+        author.style.opacity = this.transitionInRange(0, 1, 0, 2016);
+        author.style.webkitTransform = author.style.transform = 'scale(' + this.transitionInRange(.5, 1, 0, 5883) + ')';
+
+    });
+    // $('#start').show();
+    // $('#start').html(START);
 });
 
 /* Start */
+// 轉到選項頁面
 $('#start').click(function() {
-    shuffle(options);
-    $('img').show();
-    $('button').show();
-    $('#start').hide();
-    $('#score').hide();
-    window.questionNum = 0;
-    window.score = 0;
-    apply();
+
+    if ($('#start').html() == START) {
+        // Remove canvas from html.
+        $('div.fade').remove();
+        $('.overlay').css("backgroundColor", "black"); // Switch back to black overlay.
+
+        $('img').show();
+        $('#ada').hide();
+        $('#bluekey').hide();
+        $('button').show();
+        $('#startbtn').hide();
+        $('#author').hide();
+        window.questionNum = 0;
+        window.score = 0;
+        apply();
+    } else {
+        location.reload(true);
+    }
 });
 
 /* Next page */
+// 轉到下個選項
 $("#next").click(function() {
+
+    /*
+      If active option is A, then hehehe...
+     */
+    if ($("#option1").attr("class") == "active") {
+        caidan += 1;
+    }
+
     if ($("#" + options[questionNum-1]["answer"]).attr("class") == "active") {
-        score += 10;
+        score += SCORE_CORRECT_ANSWER;
+    } else {
+        score -= SCORE_WRONG_ANSWER;
     }
     console.log(score);
-    if (questionNum < options.length) {
+    if (questionNum < MAX_QUESTIONS) {
+        // If not at the last question
         apply();
     } else {
+        // If at the last question
         $('img').hide();
+        $('#ada').attr("src", "img/ADA.png");
+        $('#bluekey').attr("src", "img/bklogo.png");
+        $('#ada').show();
+        $('#bluekey').show();
         $('button').hide();
-        $('#score').show();
-        $('#score').html("Your score: " + score);
+        $('#bottom').hide();
+        $('#author').show();
+        if(caidan == 10) {
+            $('#author').html(YOUR_SCORE + ": " + 101 + "<br/>" + report[101]);    
+        }
+        else {
+            $('#author').html(YOUR_SCORE + ": " + score + "<br/>" + report[score]);
+        }
+        $('#startbtn').show();
         $('#start').show();
-        $('#start').html("RESTART!");
+        $('#start').html("RESTART");
+        if(caidan == 10) {
+            $('title').html(101 + "分 " + title[101]);    
+        }
+        else {
+            $('title').html(score + "分 " + title[score]);    
+        }
     }
 });
 
 /* Select the button */
 /* This function must be after $("#next")
     Otherwise the score cannot be shown properly. */
+// 選擇答案
 $('button').click(function() {
     if ($(this).attr('class') == 'active') {
         $(this).removeAttr('class');
@@ -158,18 +160,28 @@ $('button').click(function() {
 });
 
 /* Apply questions */
+// 將選中的題目的圖片以及四個選項應用到頁面上
 function apply() {
 
-    $('#img').attr("src", options[questionNum]["img"]);
+    /* Apply background image. */
+    var deviceHeight = $( window ).height();
+    $('.background-image').css('background','url(' + options[questionNum]["img"] + ') no-repeat');
+    $('.background-image').css('backgroundSize', "auto " + deviceHeight + "px");
+
+    $('#img').attr("src", images[questionNum].src);
     $('#option1').html(options[questionNum]["option1"]);
     $('#option2').html(options[questionNum]["option2"]);
     $('#option3').html(options[questionNum]["option3"]);
     $('#option4').html(options[questionNum]["option4"]);
-    $('#next').html("NEXT");
-    // $('#next').removeAttr('class');
+    $('#next').html(NEXT);
     questionNum ++;
 
-    if (questionNum == options.length) {
-        $('#next').html("FINISH");
+    var imageobj = new Image();
+    imageobj.src = options[questionNum]["img"];
+    images.push(imageobj);
+
+    if (questionNum == MAX_QUESTIONS) {
+        $('#next').html(FINISH);
     }
+    $('#bottom').html(questionNum + " in " + MAX_QUESTIONS);
 }
