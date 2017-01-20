@@ -1,5 +1,4 @@
-## Name
-Are You Really A Student in UofT
+# Are You Really A UofT Student?
 
 ## What is it?
 - It is a template of multiple choice questions suitable for the mobile side.
