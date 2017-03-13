@@ -1,7 +1,7 @@
 # Are You Really A UofT Student?
 
 ## What is it?
-- It is a template of multiple choice questions suitable for the mobile side
+- It is a template of multiple choice questions suitable for the mobile site
 - The questions are stored in JSON inside js &gt; database.js
 - Note: The template is in Chinese.
 
