@@ -44,7 +44,7 @@
   "devDependencies": {
     "argparse": "^1.0.3",
     "chokidar-cli": "1.2.0",
-    "jscs": "^1.13.1",
-    "uglify-js": "^2.6.0"
+    "jscs": "^3.0.7",
+    "uglify-js": "^3.4.5"
   }
 }
