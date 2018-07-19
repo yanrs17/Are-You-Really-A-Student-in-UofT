@@ -1,5 +1,7 @@
 # Are You Really A UofT Student?
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yanrs17/Are-You-Really-A-UofT-Student.svg)](https://greenkeeper.io/)
+
 ## What is it?
 - It is a template of multiple choice questions suitable for the mobile site
 - The questions are stored in JSON inside js &gt; database.js
